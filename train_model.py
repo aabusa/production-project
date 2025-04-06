@@ -1,5 +1,3 @@
-
-
 import numpy as np
 import joblib
 import os
@@ -21,15 +19,15 @@ models = {
     "Naive_Bayes": GaussianNB(),
     "Decision_Tree": DecisionTreeClassifier(max_depth=10, random_state=42),
     "Random_Forest": RandomForestClassifier(n_estimators=100, max_depth=10, random_state=42),
-    "Logistic_Regression": LogisticRegression(max_iter=200),
+    "Logistic_Regression": LogisticRegression(max_iter=1000, solver='lbfgs'),
     "SVM": SVC(kernel="linear", probability=True)
 }
 
 
 for name, model in models.items():
-    print(f" Training {name}...")
+    print(f"\n Training {name}...")
     model.fit(X_train, y_train)
     joblib.dump(model, f"trained_models/{name}_model.pkl")
-    print(f" Saved {name} to trained_models/{name}_model.pkl")
+    print(f"Saved {name} to trained_models/{name}_model.pkl")
 
 print("\n All models trained and saved successfully.")
