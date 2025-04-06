@@ -1,0 +1,8 @@
+
+# Ignore large data directories
+processed-data/
+trained_models/
+results/
+*.npy
+*.pkl
+
